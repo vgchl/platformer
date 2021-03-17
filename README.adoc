@@ -1,3 +1,9 @@
 # Platformer
 
 An old school Mario type platformer game for the web.
+
+## Running locally
+Clone this repository, then run:
+
+    npm i
+    npm start
