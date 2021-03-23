@@ -16,5 +16,11 @@ export default {
     y: 192,
     width: 48,
     height: 48,
+  },
+  blob: {
+    x: 336,
+    y: 0,
+    width: 48,
+    height: 48,
   }
 };
