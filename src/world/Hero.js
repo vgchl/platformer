@@ -4,27 +4,54 @@ import Rectangle from '../geo/Rectangle.js';
 class Hero {
 
   position = new Position(48, 0);
+  isFalling = true;
+  remainingJumpHeight = 0;
 
   render = (camera) => {
     camera.renderArt('hero', this.position.x, this.position.y);
   };
 
   update = (dt, keys) => {
+    if (!this.isFalling) {
     if (keys['ArrowLeft']) {
       this.walk(-300, dt);
     }
     if (keys['ArrowRight']) {
       this.walk(+300, dt);
     }
-    this.position.y += 300 * dt;
+    if (keys['ArrowUp']) {
+      this.remainingJumpHeight = 150;
+      if (keys['ArrowLeft']) {
+        this.jumpDirection = -1;
+      }
+      if (keys['ArrowRight']) {
+        this.jumpDirection = 1;
+      }
+
+    }
+    }
+
+    if (this.remainingJumpHeight > 0) {
+      const frameHeight = (450 * dt);
+      this.walk(this.jumpDirection * 300, dt);
+      this.remainingJumpHeight -= frameHeight;
+      this.position.y -= frameHeight;
+    } else {
+      this.jumpDirection = 0;
+      this.position.y += 450 * dt;
+    }
   };
 
-  walk = (speed, dt) => {
+  walk(speed, dt) {
     this.position.x += speed * dt;
+  }
+  jump(heigth, dt) {
+
   }
 
   collideWithPlatforms = (platforms) => {
     platforms.forEach(platform => this.resolveCollision(this.boundingBox, platform.boundingBox))
+    this.isFalling = platforms.length == 0;
   };
 
   collideWithBlobs = (blobs) => {
