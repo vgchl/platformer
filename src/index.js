@@ -1,4 +1,4 @@
-import Camera from './camera/camera.js';
+import Camera from './camera/Camera';
 import Keyboard from './Keyboard.js';
 import World from './world/world.js';
 
@@ -15,7 +15,7 @@ const frame = (frameTime) => {
     const dt = Math.min(0.05, (frameTime - lastFrameTime) / 1000)
     world.update(dt, keyboard.keys());
     camera.clear();
-    world.render(camera);
+    world.render(camera, frameTime);
   }
   window.requestAnimationFrame(frame);
   lastFrameTime = frameTime;

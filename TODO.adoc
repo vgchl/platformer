@@ -1,9 +1,0 @@
-- Jumping
-- Only update/render area close to Hero
-- Walking animations
-- Make collision handling more generic
-- TypeScript
-- Prevent player from falling out of the world
-- Optimize bounding box for moving characters.
-- Menu
-- Player lives
