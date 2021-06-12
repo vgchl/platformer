@@ -1,17 +1,15 @@
-import Entity from './Entity';
-import System from './System';
+import Entity from "./Entity";
+import System from "./System";
 
 class Scene {
-
   public entities: Entity[] = [];
   public systems: System[] = [];
 
   public update(): void {
-    this.systems.forEach(system => {
-      system.update(this.entities)
+    this.systems.forEach((system) => {
+      system.update(this.entities);
     });
   }
-
 }
 
 export default Scene;

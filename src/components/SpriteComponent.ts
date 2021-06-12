@@ -1,4 +1,4 @@
-import { Component } from '../engine';
+import { Component } from "../engine";
 
 class SpriteComponent extends Component {
   public constructor(

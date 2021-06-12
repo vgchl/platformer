@@ -1,4 +1,4 @@
-import { Component } from '../engine';
+import { Component } from "../engine";
 
 class SpeedComponent extends Component {
   public readonly speedX: number = 3;

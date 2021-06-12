@@ -6,12 +6,20 @@
   "scripts": {
     "start": "parcel src/index.html",
     "watch": "parcel watch src/index.html",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html",
+    "format": "prettier --write .",
+    "prepare": "husky install"
   },
   "author": "vgchl",
   "license": "MIT",
   "devDependencies": {
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "parcel-bundler": "^1.12.5",
+    "prettier": "2.3.1",
     "typescript": "^4.2.4"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }

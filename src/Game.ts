@@ -1,24 +1,28 @@
-import art from './art.png';
-import { CameraComponent, Components, PositionComponent, SpeedComponent, SpriteComponent } from './components';
-import { Entity, Scene } from './engine';
-import { CameraSystem, MovementSystem } from './systems';
+import art from "./art.png";
+import {
+  CameraComponent,
+  Components,
+  PositionComponent,
+  SpeedComponent,
+  SpriteComponent,
+} from "./components";
+import { Entity, Scene } from "./engine";
+import { CameraSystem, MovementSystem } from "./systems";
 
 const scene = new Scene();
 
 const hero = new Entity();
 const img = new Image();
 img.src = art;
-const spriteComponent = new SpriteComponent(
-  img, 0, 0, 96, 96
-);
+const spriteComponent = new SpriteComponent(img, 0, 0, 96, 96);
 hero.components.set(Components.position.id, new PositionComponent());
-hero.components.set(Components.sprite.id, spriteComponent)
+hero.components.set(Components.sprite.id, spriteComponent);
 hero.components.set(Components.speed.id, new SpeedComponent());
 hero.updateComponentMask();
 scene.entities.push(hero);
 
 const heroCamera = new Entity();
-const canvas = document.querySelector('.root canvas') as HTMLCanvasElement;
+const canvas = document.querySelector(".root canvas") as HTMLCanvasElement;
 heroCamera.components.set(Components.camera.id, new CameraComponent(canvas));
 heroCamera.components.set(Components.position.id, new PositionComponent());
 heroCamera.updateComponentMask();
@@ -43,9 +47,8 @@ const frame = (frameTime) => {
 window.requestAnimationFrame(frame);
 window.onblur = () => {
   paused = true;
-}
+};
 window.onfocus = () => {
   lastFrameTime = 0;
   paused = false;
-}
-
+};
