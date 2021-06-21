@@ -6,7 +6,7 @@ class Keyboard {
     this.element.addEventListener("keyup", this.onKeyUp);
   }
 
-  public get keys(): Set<string> {
+  public keys(): Set<string> {
     return new Set(this.downKeys);
   }
 

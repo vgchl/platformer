@@ -2,12 +2,18 @@ import art from "./art.png";
 import {
   CameraComponent,
   Components,
+  HeroComponent,
   PositionComponent,
   SpeedComponent,
-  SpriteComponent,
+  SpriteComponent
 } from "./components";
 import { Entity, Scene } from "./engine";
-import { CameraSystem, MovementSystem } from "./systems";
+import {
+  CameraSystem,
+  HeroControlSystem,
+  Keyboard,
+  MovementSystem
+} from "./systems";
 
 const scene = new Scene();
 
@@ -18,6 +24,10 @@ const spriteComponent = new SpriteComponent(img, 0, 0, 96, 96);
 hero.components.set(Components.position.id, new PositionComponent());
 hero.components.set(Components.sprite.id, spriteComponent);
 hero.components.set(Components.speed.id, new SpeedComponent());
+hero.components.set(
+  Components.hero.id,
+  new HeroComponent("ArrowLeft", "ArrowRight")
+);
 hero.updateComponentMask();
 scene.entities.push(hero);
 
@@ -32,6 +42,10 @@ const movementSystem = new MovementSystem();
 scene.systems.push(movementSystem);
 const cameraSystem = new CameraSystem();
 scene.systems.push(cameraSystem);
+
+const keyboard = new Keyboard(document.querySelector("body"));
+const heroControlSystem = new HeroControlSystem(keyboard);
+scene.systems.push(heroControlSystem);
 
 let paused = false;
 let lastFrameTime = 0;

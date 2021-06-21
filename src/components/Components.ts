@@ -1,5 +1,6 @@
 import { ComponentId, Entity } from "../engine";
 import CameraComponent from "./CameraComponent";
+import HeroComponent from "./HeroComponent";
 import PositionComponent from "./PositionComponent";
 import SpeedComponent from "./SpeedComponent";
 import SpriteComponent from "./SpriteComponent";
@@ -29,6 +30,9 @@ class Components {
   );
   public static readonly speed = new ComponentTypeDefinition<SpeedComponent>(
     2 ** 3
+  );
+  public static readonly hero = new ComponentTypeDefinition<HeroComponent>(
+    2 ** 4
   );
 }
 
